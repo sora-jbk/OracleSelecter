@@ -14,18 +14,14 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace prepare_oracle
 {
-    public partial class StopOracle : Form
+    public partial class ControlOracle : Form
     {
-        public StopOracle()
+        public ControlOracle()
         {
             InitializeComponent();
             OracleStatus.Text = "Unknown";
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private async void bt_StartOracle_Click(object sender, EventArgs e)
         {
@@ -52,11 +48,11 @@ namespace prepare_oracle
         }
 
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void bt_StoptOracle_Click(object sender, EventArgs e)
         {
             OracleStatus.Text = "Stopping";
             ProcessStartInfo StopOracle = new ProcessStartInfo();
-            StopOracle.FileName = "C:/SQL/StopOracle.bat";
+            StopOracle.FileName = "C:/SQL/ControlOracle.bat";
             StopOracle.Verb = "RunAs";
             StopOracle.CreateNoWindow = true;
             StopOracle.UseShellExecute = false;
@@ -64,6 +60,11 @@ namespace prepare_oracle
             Stopped.WaitForExit();
             OracleStatus.Text = "Stopped";
 
+        }
+        private void bt_GetTable_Click(object sender, EventArgs e)
+        {
+            String SelectSQL = SetSelectSQL();
+            PrintTable(SelectSQL, Setcolnums());
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -76,11 +77,6 @@ namespace prepare_oracle
 
         }
 
-        private void GetTable_Click(object sender, EventArgs e)
-        {
-            String SelectSQL = SetSelectSQL();
-            PrintTableC(SelectSQL, Setcolnums());
-        }
 
         public String SetSelectSQL()
         {
@@ -122,7 +118,7 @@ namespace prepare_oracle
         }
 
 
-        public void PrintTableC(String sql, List<int> id)
+        public void PrintTable(String sql, List<int> id)
         {
             try
             {
@@ -179,23 +175,27 @@ namespace prepare_oracle
             }
         }
 
-        public void PrintTableC(String sql)
+        public void PrintTable(String sql)
         {
-            PrintTableC(sql,new List<int> { 0 });
+            PrintTable(sql,new List<int> { 0 });
         }
-
 
         private void GetColName_Click(object sender, EventArgs e)
         {
                             colname.Items.Clear();
-            PrintTableC("SELECT COLUMN_NAME FROM ALL_TAB_COLUMNS WHERE TABLE_NAME = '" +Table_Name.Text+ "'" , new List<int> {0});
+            PrintTable("SELECT COLUMN_NAME FROM ALL_TAB_COLUMNS WHERE TABLE_NAME = '" +Table_Name.Text+ "'" , new List<int> {0});
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
+
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

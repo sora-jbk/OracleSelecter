@@ -16,7 +16,7 @@ namespace prepare_oracle
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StopOracle());
+            Application.Run(new ControlOracle());
         }
     }
 }

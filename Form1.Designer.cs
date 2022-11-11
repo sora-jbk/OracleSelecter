@@ -1,6 +1,6 @@
 ﻿namespace prepare_oracle
 {
-    partial class StopOracle
+    partial class ControlOracle
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -56,9 +56,9 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 80);
             this.button1.TabIndex = 1;
-            this.button1.Text = "StopOracle";
+            this.button1.Text = "ControlOracle";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.bt_StoptOracle_Click);
             // 
             // label1
             // 
@@ -87,7 +87,7 @@
             this.GetTable.TabIndex = 4;
             this.GetTable.Text = "GetTable";
             this.GetTable.UseVisualStyleBackColor = true;
-            this.GetTable.Click += new System.EventHandler(this.GetTable_Click);
+            this.GetTable.Click += new System.EventHandler(this.bt_GetTable_Click);
             // 
             // ResultText
             // 
@@ -135,7 +135,7 @@
             this.TNameSelecter.TabIndex = 9;
             this.TNameSelecter.SelectedIndexChanged += new System.EventHandler(this.TNameSelecter_SelectedIndexChanged);
             // 
-            // StopOracle
+            // ControlOracle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -150,7 +150,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.StartOracle);
-            this.Name = "StopOracle";
+            this.Name = "ControlOracle";
             this.Text = "Prepare Oracle";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

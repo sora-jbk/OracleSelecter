@@ -8,7 +8,6 @@ C:\repos\prepare_oracle\obj\Debug\prepare_oracle.csproj.GenerateResource.cache
 C:\repos\prepare_oracle\obj\Debug\prepare_oracle.csproj.CoreCompileInputs.cache
 C:\repos\prepare_oracle\obj\Debug\prepare_oracle.exe
 C:\repos\prepare_oracle\obj\Debug\prepare_oracle.pdb
-C:\repos\prepare_oracle\obj\Debug\prepare_oracle.StopOracle.resources
 C:\repos\prepare_oracle\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\repos\prepare_oracle\bin\Debug\Oracle.ManagedDataAccess.dll
 C:\repos\prepare_oracle\bin\Debug\System.Buffers.dll
@@ -30,3 +29,4 @@ C:\repos\prepare_oracle\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\repos\prepare_oracle\bin\Debug\System.ValueTuple.xml
 C:\repos\prepare_oracle\obj\Debug\prepare_oracle.csproj.CopyComplete
 C:\repos\prepare_oracle\obj\Debug\prepare_oracle.Form2.resources
+C:\repos\prepare_oracle\obj\Debug\prepare_oracle.ControlOracle.resources
