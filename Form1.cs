@@ -149,17 +149,26 @@ namespace prepare_oracle
                                 form2.FTable.Rows.Add();
                                 foreach (int i in id)
                                 {
-                                    ResultText.Text += reader[i] + "\t";
-                                    colname.Items.Add(reader[i]);
+                                    if (sql.Contains("_TAB_COLUMNS"))
+                                    {
+                                        ResultText.Text += reader[i] + "\t";
+                                        colname.Items.Add(reader[i]);
+                                    }
+                                    else
+                                    {
+                                        form2.FTable.Rows[j].Cells[i].
+                                        Value = reader[i];
+                                    }
                                     Console.WriteLine("MSG>>i= "+ i );
 
-                                    form2.FTable.Rows[j].Cells[i].
-                                        Value = reader[i];
                                 }
                                 j++;
                                 ResultText.Text += "\r\n";
                             }
-                            form2.ShowDialog();
+                            if (!sql.Contains("_TAB_COLUMNS"))
+                            {
+                                form2.ShowDialog();
+                            }
                         }
                     }
                 }
@@ -192,6 +201,11 @@ namespace prepare_oracle
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TNameSelecter_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

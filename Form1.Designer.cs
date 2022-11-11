@@ -37,6 +37,7 @@
             this.GetColName = new System.Windows.Forms.Button();
             this.colname = new System.Windows.Forms.CheckedListBox();
             this.Table_Name = new System.Windows.Forms.TextBox();
+            this.TNameSelecter = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // StartOracle
@@ -125,11 +126,21 @@
             this.Table_Name.Text = "emp";
             this.Table_Name.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
+            // TNameSelecter
+            // 
+            this.TNameSelecter.FormattingEnabled = true;
+            this.TNameSelecter.Location = new System.Drawing.Point(522, 209);
+            this.TNameSelecter.Name = "TNameSelecter";
+            this.TNameSelecter.Size = new System.Drawing.Size(266, 26);
+            this.TNameSelecter.TabIndex = 9;
+            this.TNameSelecter.SelectedIndexChanged += new System.EventHandler(this.TNameSelecter_SelectedIndexChanged);
+            // 
             // StopOracle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TNameSelecter);
             this.Controls.Add(this.Table_Name);
             this.Controls.Add(this.colname);
             this.Controls.Add(this.GetColName);
@@ -158,6 +169,7 @@
         private System.Windows.Forms.Button GetColName;
         private System.Windows.Forms.CheckedListBox colname;
         private System.Windows.Forms.TextBox Table_Name;
+        private System.Windows.Forms.ComboBox TNameSelecter;
     }
 }
 
