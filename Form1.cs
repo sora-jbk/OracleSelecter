@@ -198,7 +198,7 @@ namespace prepare_oracle
 
         public void getTableName()
         {
-            PrintTable("SELECT DISTINCT TABLE_NAME FROM USER_TAB_COLUMNS", new List<int>{ 0});
+            PrintTable("SELECT DISTINCT TABLE_NAME FROM USER_TAB_COLUMNS ORDER BY TABLE_NAME", new List<int>{ 0});
         }
 
         private void GetColName_Click(object sender, EventArgs e)
