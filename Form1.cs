@@ -20,6 +20,7 @@ namespace prepare_oracle
         {
             InitializeComponent();
             OracleStatus.Text = "Unknown";
+            getTableName();
         }
 
 
@@ -120,6 +121,7 @@ namespace prepare_oracle
 
         public void PrintTable(String sql, List<int> id)
         {
+            sql = sql.ToUpper();
             try
             {
                 using (OracleConnection conn = new OracleConnection())
@@ -130,7 +132,7 @@ namespace prepare_oracle
                     Form2 form2 = new Form2();
                     form2.FTable.ColumnCount = 1;
                     form2.FTable.RowCount = 1;
-                    using (OracleCommand cmd = new OracleCommand(sql.ToUpper()))
+                    using (OracleCommand cmd = new OracleCommand(sql))
                     {
                         cmd.Connection = conn;
                         cmd.CommandType = CommandType.Text;
@@ -145,7 +147,11 @@ namespace prepare_oracle
                                 form2.FTable.Rows.Add();
                                 foreach (int i in id)
                                 {
-                                    if (sql.Contains("_TAB_COLUMNS"))
+                                    if(sql.Contains("TABLE_NAME FROM USER_TAB_COLUMNS"))
+                                    {
+                                        TNameSelecter.Items.Add(reader[i]);
+                                    }
+                                    else if (sql.Contains("ALL_TAB_COLUMNS") && sql.Contains("DISTINCT"))
                                     {
                                         ResultText.Text += reader[i] + "\t";
                                         colname.Items.Add(reader[i]);
@@ -161,8 +167,7 @@ namespace prepare_oracle
                                 j++;
                                 ResultText.Text += "\r\n";
                             }
-                            if (!sql.Contains("_TAB_COLUMNS"))
-                            {
+                            if (sql.Contains("USER_TAB_COLUMNS") {
                                 form2.ShowDialog();
                             }
                         }
@@ -174,16 +179,27 @@ namespace prepare_oracle
                 Console.WriteLine(ex.Message.ToString());
             }
         }
-
         public void PrintTable(String sql)
         {
             PrintTable(sql,new List<int> { 0 });
         }
 
+        public void getTableName()
+        {
+            PrintTable("SELECT DISTINCT TABLE_NAME FROM USER_TAB_COLUMNS", new List<int>{ 0});
+        }
+
         private void GetColName_Click(object sender, EventArgs e)
         {
                             colname.Items.Clear();
-            PrintTable("SELECT COLUMN_NAME FROM ALL_TAB_COLUMNS WHERE TABLE_NAME = '" +Table_Name.Text+ "'" , new List<int> {0});
+            if (TNameSelecter.SelectedIndex != -1)
+            {
+                PrintTable("SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = '" + Table_Name.Text + "'", new List<int> { 0 });
+            }
+            else
+            {
+
+            }
         }
 
 
