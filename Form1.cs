@@ -151,7 +151,7 @@ namespace prepare_oracle
                                     {
                                         TNameSelecter.Items.Add(reader[i]);
                                     }
-                                    else if (sql.Contains("ALL_TAB_COLUMNS") && sql.Contains("DISTINCT"))
+                                    else if (sql.Contains("COLUMN_NAME FROM USER_TAB_COLUMNS"))
                                     {
                                         ResultText.Text += reader[i] + "\t";
                                         colname.Items.Add(reader[i]);
@@ -167,7 +167,7 @@ namespace prepare_oracle
                                 j++;
                                 ResultText.Text += "\r\n";
                             }
-                            if (sql.Contains("USER_TAB_COLUMNS") {
+                            if (!sql.Contains("USER_TAB_COLUMNS")){
                                 form2.ShowDialog();
                             }
                         }
