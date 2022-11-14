@@ -98,7 +98,7 @@ namespace prepare_oracle
                 Console.WriteLine(colname.CheckedItems[i].ToString());
             }
             Console.WriteLine("----");
-            SelectSQL += "FROM " + Table_Name.Text;
+            SelectSQL += "FROM " + TNameSelecter.SelectedItem.ToString();
             Console.WriteLine("MSG>>--SQL--\n" +
                 SelectSQL
                 + "\n------------");
@@ -194,7 +194,7 @@ namespace prepare_oracle
                             colname.Items.Clear();
             if (TNameSelecter.SelectedIndex != -1)
             {
-                PrintTable("SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = '" + Table_Name.Text + "'", new List<int> { 0 });
+                PrintTable("SELECT COLUMN_NAME FROM USER_TAB_COLUMNS WHERE TABLE_NAME = '" + TNameSelecter.SelectedItem.ToString() + "'", new List<int> { 0 });
             }
             else
             {
