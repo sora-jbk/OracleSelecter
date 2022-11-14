@@ -144,6 +144,7 @@ namespace prepare_oracle
                             int j = 0;
                             while (reader.Read())
                             {
+                                
                                 form2.FTable.Rows.Add();
                                 foreach (int i in id)
                                 {
@@ -168,6 +169,7 @@ namespace prepare_oracle
                                 ResultText.Text += "\r\n";
                             }
                             if (!sql.Contains("USER_TAB_COLUMNS")){
+                                SetColtitle(form2);
                                 form2.ShowDialog();
                             }
                         }
@@ -179,6 +181,16 @@ namespace prepare_oracle
                 Console.WriteLine(ex.Message.ToString());
             }
         }
+
+        public void SetColtitle(Form2 f2)
+        {
+            for(int i = 0; i < colname.CheckedItems.Count; i++)
+            {
+                Console.WriteLine("i = " + i);
+                f2.FTable.Columns[i].HeaderText = colname.CheckedItems[i].ToString();
+            }
+        }
+
         public void PrintTable(String sql)
         {
             PrintTable(sql,new List<int> { 0 });
